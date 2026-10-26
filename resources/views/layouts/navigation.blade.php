@@ -15,6 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @if (auth()->user()->role == 'admin')
+                        <x-nav-link href="#">Kategori</x-nav-link>
+                        <x-nav-link href="#">Menu</x-nav-link>
+                        <x-nav-link href="#">Pesanan</x-nav-link>
+                    @else
+                        <x-nav-link href="#">Katalog</x-nav-link>
+                        <x-nav-link href="#">Keranjang</x-nav-link>
+                        <x-nav-link href="#">Riwayat</x-nav-link>
+                    @endif
                 </div>
             </div>
 
