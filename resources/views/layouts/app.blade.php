@@ -38,8 +38,7 @@
                 @endif
                 {{ $slot }}
             </main>
-
-            <footer class="text-center text-sm text-brown/60 py-6">
+            <footer class="text-center text-sm text-gray-500 py-6">
                 &copy; {{ date('Y') }} Duduk Dulu
             </footer>
         </div>
