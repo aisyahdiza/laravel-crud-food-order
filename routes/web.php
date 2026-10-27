@@ -3,9 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/register');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -15,6 +13,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/catalog', function () {
+        return view('customer.catalog');
+    })->name('customer.catalog');
+
+    Route::get('/cart', function () {
+        return view('customer.cart');
+    })->name('customer.cart');
 });
+
+
 
 require __DIR__.'/auth.php';

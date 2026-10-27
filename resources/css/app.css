@@ -1,3 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+    --color-cream: #feefb8;
+    --color-cream-dark: #cebe82;
+    --color-sky: #c4dae8;
+    --color-sky-dark: #799db4;
+    --color-steel: #386e90;
+    --color-brown: #432f2e;
+    --color-brown-dark: #2b1e1d;
+    --color-terracotta: #c45d45;
+    --color-terracotta-dark: #9c3a24;
+
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --font-playfair: 'Playfair Display', ui-serif, Georgia, serif;
+}
