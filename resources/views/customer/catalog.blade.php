@@ -1,59 +1,22 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Catalog | FoodOrder</title>
+<x-app-layout>
+    <div class="mx-auto max-w-7xl px-6 py-12">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-
-<body class="min-h-screen bg-cream text-brown">
-
-
-    <nav class="sticky top-0 z-40 border-b border-steel bg-sky">
-        <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
-            <a href="{{ route('customer.catalog') }}" class="text-2xl font-bold">FoodOrder</a>
-
-            <div class="flex items-center gap-2 text-sm font-medium">
-                <a href="{{ route('customer.catalog') }}"
-                   class="rounded-lg px-4 py-3 transition hover:bg-sky-dark focus-visible:outline-2 focus-visible:outline-brown">
-                    Menu
-                </a>
-
-                <a href="#cart"
-                   class="rounded-lg px-4 py-3 transition hover:bg-sky-dark focus-visible:outline-2 focus-visible:outline-brown">
-                    Cart
-                </a>
-
-                <a href="#order"
-                   class="rounded-lg px-4 py-3 transition hover:bg-sky-dark focus-visible:outline-2 focus-visible:outline-brown">
-                    Order
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <main id="main" class="mx-auto max-w-7xl px-6 py-12">
-
+        {{-- HERO --}}
         <section class="mb-10">
             <h1 class="font-playfair mb-2 text-4xl font-extrabold italic sm:text-5xl lg:text-6xl">
                 WHAT'S FOR TODAY?
             </h1>
-            <p class="text-lg font-bold sm:text-xl">Find your menu and orders easily!</p>
+            <p class="text-lg font-bold sm:text-xl">Find your menu and orders easily.</p>
         </section>
 
+        {{-- SEARCH --}}
         <section class="mb-8">
             <label for="search" class="mb-2 block text-sm font-medium text-terracotta">Search menu</label>
 
             <div class="relative md:max-w-lg">
                 <svg class="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-brown/60"
                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" />
                 </svg>
 
@@ -63,6 +26,7 @@
             </div>
         </section>
 
+        {{-- CATALOG --}}
         <section>
             <div class="mb-6 flex items-center justify-between">
                 <h2 class="text-2xl font-bold">Menu Catalog</h2>
@@ -70,6 +34,7 @@
 
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
+                {{-- 1. Cream Soup --}}
                 <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-brown bg-sky shadow-lg transition hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none motion-reduce:hover:translate-y-0">
                     <div class="flex h-44 items-center justify-center bg-white">
                         ini buat gambarr
@@ -88,6 +53,7 @@
                             <span class="font-bold text-terracotta">Rp23.000</span>
 
                             <button type="button"
+                                    aria-label="Tambah Cream Soup ke keranjang"
                                     class="rounded-lg bg-brown px-4 py-2 text-sm font-semibold text-cream transition hover:bg-brown-dark active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brown">
                                 + Cart
                             </button>
@@ -95,6 +61,7 @@
                     </div>
                 </article>
 
+                {{-- 2. Special Fried Rice --}}
                 <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-brown bg-sky shadow-lg transition hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none motion-reduce:hover:translate-y-0">
                     <div class="flex h-44 items-center justify-center bg-white">
                         ini buat gambarr
@@ -113,6 +80,7 @@
                             <span class="font-bold text-terracotta">Rp18.000</span>
 
                             <button type="button"
+                                    aria-label="Tambah Special Fried Rice ke keranjang"
                                     class="rounded-lg bg-brown px-4 py-2 text-sm font-semibold text-cream transition hover:bg-brown-dark active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brown">
                                 + Cart
                             </button>
@@ -120,6 +88,7 @@
                     </div>
                 </article>
 
+                {{-- 3. Chicken Katsu Ricebowl --}}
                 <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-brown bg-sky shadow-lg transition hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none motion-reduce:hover:translate-y-0">
                     <div class="flex h-44 items-center justify-center bg-white">
                         ini buat gambarr
@@ -138,6 +107,7 @@
                             <span class="font-bold text-terracotta">Rp20.000</span>
 
                             <button type="button"
+                                    aria-label="Tambah Chicken Katsu Ricebowl ke keranjang"
                                     class="rounded-lg bg-brown px-4 py-2 text-sm font-semibold text-cream transition hover:bg-brown-dark active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brown">
                                 + Cart
                             </button>
@@ -145,6 +115,7 @@
                     </div>
                 </article>
 
+                {{-- 4. French Fries --}}
                 <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-brown bg-sky shadow-lg transition hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none motion-reduce:hover:translate-y-0">
                     <div class="flex h-44 items-center justify-center bg-white">
                         ini buat gambarr
@@ -163,6 +134,7 @@
                             <span class="font-bold text-terracotta">Rp10.000</span>
 
                             <button type="button"
+                                    aria-label="Tambah French Fries ke keranjang"
                                     class="rounded-lg bg-brown px-4 py-2 text-sm font-semibold text-cream transition hover:bg-brown-dark active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brown">
                                 + Cart
                             </button>
@@ -170,6 +142,7 @@
                     </div>
                 </article>
 
+                {{-- 5. Salt and Pepper Fried Tofu --}}
                 <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-brown bg-sky shadow-lg transition hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none motion-reduce:hover:translate-y-0">
                     <div class="flex h-44 items-center justify-center bg-white">
                         ini buat gambarr
@@ -188,6 +161,7 @@
                             <span class="font-bold text-terracotta">Rp10.000</span>
 
                             <button type="button"
+                                    aria-label="Tambah Salt and Pepper Fried Tofu ke keranjang"
                                     class="rounded-lg bg-brown px-4 py-2 text-sm font-semibold text-cream transition hover:bg-brown-dark active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brown">
                                 + Cart
                             </button>
@@ -195,6 +169,7 @@
                     </div>
                 </article>
 
+                {{-- 6. Caramel Pudding --}}
                 <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-brown bg-sky shadow-lg transition hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none motion-reduce:hover:translate-y-0">
                     <div class="flex h-44 items-center justify-center bg-white">
                         ini buat gambarr
@@ -213,6 +188,7 @@
                             <span class="font-bold text-terracotta">Rp12.000</span>
 
                             <button type="button"
+                                    aria-label="Tambah Caramel Pudding ke keranjang"
                                     class="rounded-lg bg-brown px-4 py-2 text-sm font-semibold text-cream transition hover:bg-brown-dark active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brown">
                                 + Cart
                             </button>
@@ -221,6 +197,5 @@
                 </article>
             </div>
         </section>
-    </main>
-</body>
-</html>
+    </div>
+</x-app-layout>
