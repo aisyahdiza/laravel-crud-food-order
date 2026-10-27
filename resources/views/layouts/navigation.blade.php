@@ -30,7 +30,10 @@
                             class="text-brown! {{ request()->routeIs('customer.cart') ? 'border-terracotta!' : 'hover:border-brown/30!' }}">
                             Cart
                         </x-nav-link>
-                        <x-nav-link href="#" class="text-brown! hover:border-brown/30!">History</x-nav-link>
+                        <x-nav-link :href="route('customer.order')" :active="request()->routeIs('customer.order', 'review.*')"
+                            class="text-brown! {{ request()->routeIs('customer.order', 'review.*') ? 'border-terracotta!' : 'hover:border-brown/30!' }}">
+                            Order History
+                        </x-nav-link>
                     @endif
                 </div>
             </div>

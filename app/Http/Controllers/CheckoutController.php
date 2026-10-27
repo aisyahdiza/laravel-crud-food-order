@@ -72,7 +72,7 @@ class CheckoutController extends Controller
             Cart::where('user_id', auth()->id())->delete();
         });
 
-        return redirect()->route('customer.catalog')
+        return redirect()->route('customer.order')
             ->with('success', 'Order successfully created for table number '.$data['table_number'].'.');
     }
 }
