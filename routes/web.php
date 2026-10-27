@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/register');
@@ -26,6 +28,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+
+    Route::get('/order', [OrderController::class, 'index'])->name('customer.order');
+
+    Route::get('/orders/{order}/review', [ReviewController::class, 'create'])->name('review.create');
+    Route::post('/orders/{order}/review', [ReviewController::class, 'store'])->name('review.store');
 });
 
 
