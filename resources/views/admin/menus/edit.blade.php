@@ -5,7 +5,7 @@
             class="text-sm font-medium text-terracotta transition hover:text-terracotta-dark">&larr; Back to menus</a>
 
         <section class="mb-8 mt-4">
-            <h1 class="font-playfair mb-2 text-4xl font-extrabold italic sm:text-5xl">EDIT MENU</h1>
+            <h1 class="font-playfair mb-2 text-4xl font-extrabold italic sm:text-5xl">Edit Menu</h1>
             <p class="text-lg font-bold">Update the details of {{ $menu->name }}.</p>
         </section>
 

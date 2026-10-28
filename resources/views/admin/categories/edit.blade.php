@@ -7,7 +7,7 @@
             class="text-sm font-medium text-terracotta transition hover:text-terracotta-dark">&larr; Back to categories</a>
 
         <section class="mb-8 mt-4">
-            <h1 class="font-playfair mb-2 text-4xl font-extrabold italic sm:text-5xl">EDIT CATEGORY</h1>
+            <h1 class="font-playfair mb-2 text-4xl font-extrabold italic sm:text-5xl">Edit Category</h1>
             <p class="text-lg font-bold">The new name applies to every menu in this category.</p>
         </section>
 
