@@ -16,7 +16,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (! $request->user() || $request->user()->role !== 'admin') {
-            abort(403, 'Halaman ini hanya untuk admin.');
+            abort(403, 'This page is for admins only.');
         }
         
         return $next($request);

@@ -6,6 +6,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/register');
@@ -35,6 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/orders/{order}/review', [ReviewController::class, 'store'])->name('review.store');
 });
 
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
 
 require __DIR__.'/admin.php';
 require __DIR__.'/auth.php';
