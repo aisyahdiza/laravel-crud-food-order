@@ -9,15 +9,6 @@
             <p class="text-lg font-bold sm:text-xl">See your past orders and leave a review.</p>
         </section>
 
-        @php
-            $statusStyle = [
-                'pending'    => 'bg-white text-brown border-brown/40',
-                'processing' => 'bg-cream text-brown border-brown',
-                'completed'  => 'bg-brown text-cream border-brown',
-                'cancelled'  => 'bg-terracotta text-white border-terracotta-dark',
-            ];
-        @endphp
-
         @if ($orders->isEmpty())
             <section class="rounded-2xl border border-brown bg-sky p-10 text-center shadow-lg">
                 <p class="font-playfair mb-2 text-2xl font-bold italic">No orders yet</p>
@@ -42,10 +33,7 @@
                                     {{ $order->created_at->format('d M Y, H:i') }}
                                 </p>
                             </div>
-
-                            <span class="rounded-full border px-3 py-1 text-xs font-semibold capitalize {{ $statusStyle[$order->status] ?? 'bg-white text-brown border-brown/40' }}">
-                                {{ $order->status }}
-                            </span>
+                            <x-status-badge :status="$order->status" />
                         </div>
 
                         <div class="mt-3 flex items-center justify-between">
@@ -87,7 +75,7 @@
                         </details>
 
                         {{-- Review --}}
-                        @if ($order->status === 'completed')
+                        @if ($order->status === \App\Models\Order::STATUS_COMPLETED)
                             <div class="mt-4 border-t border-brown/30 pt-3">
                                 @if ($order->review)
                                     <p class="text-xs font-semibold uppercase tracking-wide text-terracotta">Your review</p>
