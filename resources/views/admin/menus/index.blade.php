@@ -192,6 +192,6 @@
             <div class="mt-6">{{ $menus->links() }}</div>
         </section>
 
-        <x-delete-modal title="DELETE MENU?" />
+        <x-delete-modal title="Delete Menu?" />
     </div>
 </x-app-layout>
