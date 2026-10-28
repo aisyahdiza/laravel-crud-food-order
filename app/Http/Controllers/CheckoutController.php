@@ -58,7 +58,7 @@ class CheckoutController extends Controller
                 'table_number' => $data['table_number'],
                 'note' => $data['note'] ?? null,
                 'total_price' => $items->sum(fn ($i) => $i->menu->price * $i->quantity),
-                'status' => 'pending',
+                'status' => Order::STATUS_PENDING,
             ]);
 
             foreach ($items as $item) {
