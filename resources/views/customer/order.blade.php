@@ -1,10 +1,9 @@
 <x-app-layout>
     <div class="mx-auto max-w-7xl px-6 py-12">
 
-        {{-- HERO --}}
         <section class="mb-10">
             <h1 class="font-playfair mb-2 text-4xl font-extrabold italic sm:text-5xl lg:text-6xl">
-                ORDER HISTORY
+                Order History
             </h1>
             <p class="text-lg font-bold sm:text-xl">See your past orders and leave a review.</p>
         </section>
@@ -23,7 +22,6 @@
                 @foreach ($orders as $order)
                     <article class="overflow-hidden rounded-2xl border border-brown bg-sky p-5 shadow-lg">
 
-                        {{-- Header --}}
                         <div class="flex flex-wrap items-start justify-between gap-3">
                             <div>
                                 <p class="text-xs font-semibold uppercase tracking-wide text-terracotta">
@@ -43,7 +41,6 @@
                             </span>
                         </div>
 
-                        {{-- Detail --}}
                         <details class="group mt-4 border-t border-brown/30 pt-3">
                             <summary class="cursor-pointer text-sm font-semibold underline transition hover:text-brown-dark">
                                 <span class="group-open:hidden">View details</span>
@@ -74,7 +71,6 @@
                             @endif
                         </details>
 
-                        {{-- Review --}}
                         @if ($order->status === \App\Models\Order::STATUS_COMPLETED)
                             <div class="mt-4 border-t border-brown/30 pt-3">
                                 @if ($order->review)

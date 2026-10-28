@@ -1,15 +1,13 @@
 <x-app-layout>
     <div class="mx-auto max-w-7xl px-6 py-12">
 
-        {{-- HERO --}}
         <section class="mb-10">
             <h1 class="font-playfair mb-2 text-4xl font-extrabold italic sm:text-5xl lg:text-6xl">
-                WHAT'S FOR TODAY?
+                What's For Today?
             </h1>
-            <p class="text-lg font-bold sm:text-xl">Find your menu and orders easily.</p>
+            <p class="text-lg font-bold sm:text-xl">Find your menu and order easily.</p>
         </section>
 
-        {{-- SEARCH + FILTER --}}
         <section class="mb-8">
             <form method="GET" action="{{ route('customer.catalog') }}">
                 <label for="search" class="mb-2 block text-sm font-medium text-terracotta">Search menu</label>
@@ -31,7 +29,6 @@
                 @endif
             </form>
 
-            {{-- Category chips --}}
             <div class="mt-4 flex flex-wrap gap-2">
                 @php
                     $chip = 'rounded-full border border-brown px-4 py-1.5 text-sm font-semibold transition';
@@ -51,7 +48,6 @@
             </div>
         </section>
 
-        {{-- CATALOG --}}
         <section>
             <div class="mb-6 flex items-center justify-between">
                 <h2 class="text-2xl font-bold">Menu Catalog</h2>
@@ -68,8 +64,8 @@
                     @foreach ($menus as $menu)
                         <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-brown bg-sky shadow-lg transition hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none motion-reduce:hover:translate-y-0 {{ $menu->is_available ? '' : 'opacity-70' }}">
                             <div class="flex h-44 items-center justify-center overflow-hidden bg-white text-sm text-brown/60">
-                                @if ($menu->image_link)
-                                    <img src="{{ $menu->image_link }}" alt="{{ $menu->name }}" class="h-full w-full object-cover">
+                                @if ($menu->image_url)
+                                    <img src="{{ $menu->image_url }}" alt="{{ $menu->name }}" class="h-full w-full object-cover">
                                 @else
                                     No image
                                 @endif
@@ -93,7 +89,6 @@
                                         @php $cart = $carts[$menu->id] ?? null; @endphp
 
                                         @if ($cart)
-                                            {{-- Stepper: item sudah ada di keranjang --}}
                                             <div class="flex items-center rounded-lg border border-brown bg-white">
                                                 <form method="POST" action="{{ route('cart.update', $cart) }}">
                                                     @csrf @method('PATCH')
@@ -113,7 +108,6 @@
                                                 </form>
                                             </div>
                                         @else
-                                            {{-- Belum ada di keranjang --}}
                                             <form method="POST" action="{{ route('cart.store') }}">
                                                 @csrf
                                                 <input type="hidden" name="menu_id" value="{{ $menu->id }}">
