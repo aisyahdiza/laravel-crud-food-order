@@ -10,10 +10,43 @@ use Illuminate\Support\Facades\Storage;
 
 class MenuController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $menus = Menu::with('category')->orderBy('name')->paginate(10);
-        return view('admin.menus.index', compact('menus'));
+        $search = trim((string) $request->query('search', ''));
+        $categoryId = $request->query('category');
+        $availability = $request->query('status');
+        $sort = $request->query('sort', 'name_asc');
+
+        $sorts = [
+            'name_asc' => ['name', 'asc'],
+            'name_desc' => ['name', 'desc'],
+            'price_asc' => ['price', 'asc'],
+            'price_desc' => ['price', 'desc'],
+            'newest' => ['created_at', 'desc'],
+        ];
+        [$column, $direction] = $sorts[$sort] ?? $sorts['name_asc'];
+
+        $menus = Menu::with('category')
+            ->when($search !== '', function ($query) use ($search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%");
+                });
+            })
+            ->when($categoryId, fn ($query) => $query->where('category_id', $categoryId))
+            ->when($availability === 'available', fn ($query) => $query->where('is_available', true))
+            ->when($availability === 'sold_out', fn ($query) => $query->where('is_available', false))
+            ->orderBy($column, $direction)
+            ->orderBy('id')
+            ->paginate(10)
+            ->withQueryString();
+
+        $categories = Category::orderBy('name')->get();
+        $total = Menu::count();
+
+        return view('admin.menus.index', compact(
+            'menus', 'categories', 'total', 'search', 'categoryId', 'availability', 'sort'
+        ));
     }
 
     public function create()
@@ -44,6 +77,17 @@ class MenuController extends Controller
     public function update(Request $request, Menu $menu)
     {
         $data = $this->validated($request);
+
+        $data = $request->validate([
+            'category_id' => ['required', 'exists:categories,id'],
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string', 'max:255'],
+            'price' => ['required', 'numeric', 'min:0', 'max:99999999'],
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
+            'remove_image' => ['nullable', 'boolean'],
+        ], [
+            'category_id.required' => 'Please choose a category.',
+        ]);
 
         if ($request->hasFile('image')){
             $this->deleteImage($menu);
