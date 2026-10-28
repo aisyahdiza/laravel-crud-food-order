@@ -1,10 +1,9 @@
 <x-app-layout>
     <div class="mx-auto max-w-3xl px-6 py-12">
 
-        {{-- HERO --}}
         <section class="mb-10">
             <h1 class="font-playfair mb-2 text-4xl font-extrabold italic sm:text-5xl">
-                RATE YOUR ORDER
+                Rate and Review
             </h1>
             <p class="text-lg font-bold sm:text-xl">
                 Order #{{ $order->id }} · Table {{ $order->table_number }}
@@ -13,7 +12,6 @@
 
         <div class="rounded-2xl border border-brown bg-sky p-6 shadow-lg">
 
-            {{-- Ringkasan pesanan --}}
             <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-terracotta">You ordered</p>
             <ul class="mb-6 text-sm text-brown/80">
                 @foreach ($order->items as $item)
@@ -25,7 +23,6 @@
                 x-data="{ rating: {{ (float) old('rating', 0) }}, hover: 0 }">
                 @csrf
 
-                {{-- Rating --}}
                 <div class="mb-5">
                     <label class="mb-2 block text-sm font-medium text-terracotta">Rating</label>
 
@@ -63,7 +60,6 @@
                     @enderror
                 </div>
 
-                {{-- Comment --}}
                 <div class="mb-6">
                     <label for="comment" class="mb-2 block text-sm font-medium text-terracotta">
                         Comment <span class="text-brown/60">(optional)</span>

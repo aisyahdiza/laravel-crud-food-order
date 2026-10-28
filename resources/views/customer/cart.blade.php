@@ -1,16 +1,14 @@
 <x-app-layout>
     <div class="mx-auto max-w-7xl px-6 py-12">
 
-        {{-- HERO --}}
         <section class="mb-10">
             <h1 class="font-playfair mb-2 text-4xl font-extrabold italic sm:text-5xl lg:text-6xl">
-                YOUR CART
+                Your Cart
             </h1>
             <p class="text-lg font-bold sm:text-xl">Check your orders before checkout.</p>
         </section>
 
         @if ($items->isEmpty())
-            {{-- EMPTY STATE --}}
             <section class="rounded-2xl border border-brown bg-sky p-10 text-center shadow-lg">
                 <p class="font-playfair mb-2 text-2xl font-bold italic">Your cart is empty</p>
                 <p class="mb-6 text-sm text-brown/80">Looks like you haven't picked anything yet.</p>
@@ -22,7 +20,6 @@
         @else
             <section class="grid grid-cols-1 gap-8 lg:grid-cols-3">
 
-                {{-- ITEM LIST --}}
                 <div class="space-y-4 lg:col-span-2">
                     <div class="mb-2 flex items-center justify-between">
                         <h2 class="text-2xl font-bold">Order Items</h2>
@@ -35,8 +32,8 @@
                         <article class="flex flex-col gap-4 overflow-hidden rounded-2xl border border-brown bg-sky p-4 shadow-lg sm:flex-row sm:items-center">
 
                             <div class="flex h-24 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white text-sm text-brown/60 sm:w-24">
-                                @if ($menu->image_link)
-                                    <img src="{{ $menu->image_link }}" alt="{{ $menu->name }}" class="h-full w-full object-cover">
+                                @if ($menu->image_url)
+                                    <img src="{{ $menu->image_url }}" alt="{{ $menu->name }}" class="h-full w-full object-cover">
                                 @else
                                     No image
                                 @endif
@@ -95,7 +92,6 @@
                     @endforeach
                 </div>
 
-                {{-- SUMMARY --}}
                 <aside class="h-fit rounded-2xl border border-brown bg-sky p-6 shadow-lg lg:sticky lg:top-6">
                     <h2 class="font-playfair mb-4 text-2xl font-bold italic">Order Summary</h2>
 
