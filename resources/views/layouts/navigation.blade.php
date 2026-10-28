@@ -21,7 +21,8 @@
                             class="text-brown! {{ request()->routeIs('admin.categories.*') ? 'border-terracotta!' : 'hover:border-brown/30!' }}">Category</x-nav-link>
                         <x-nav-link :href="route('admin.menus.index')" :active="request()->routeIs('admin.menus.*')"
                             class="text-brown! {{ request()->routeIs('admin.menus.*') ? 'border-terracotta!' : 'hover:border-brown/30!' }}">Menu</x-nav-link>
-                        <x-nav-link href="#" class="text-brown! hover:border-brown/30!">Order</x-nav-link>
+                        <x-nav-link :href="route('admin.orders.index')" :active="request()->routeIs('admin.orders.*')"
+                            class="text-brown! {{ request()->routeIs('admin.orders.*') ? 'border-terracotta!' : 'hover:border-brown/30!' }}">Order</x-nav-link>
                     @else
                         <x-nav-link :href="route('customer.catalog')" :active="request()->routeIs('customer.catalog')"
                             class="text-brown! {{ request()->routeIs('customer.catalog') ? 'border-terracotta!' : 'hover:border-brown/30!' }}">
