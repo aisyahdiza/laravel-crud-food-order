@@ -17,6 +17,9 @@ class Menu extends Model
         'is_available' => 'boolean',
     ];
 
+    public function getImageUrlAttribute(): ?string{
+        return $this->image_link ? asset('storage/' . $this->image_link) : null;
+    }
     public function category(): BelongsTo {
         return $this->belongsTo(Category::class);
     }
