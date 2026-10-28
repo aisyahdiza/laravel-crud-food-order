@@ -27,4 +27,39 @@ class Order extends Model
     public function review(): HasOne {
         return $this->hasOne(Review::class);
     }
+    
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_PROCESSING = 'processing';
+    public const STATUS_READY = 'ready';
+    public const STATUS_COMPLETED = 'completed';
+    public const STATUS_CANCELLED = 'cancelled';
+
+    public const STATUSES = [
+        self::STATUS_PENDING => 'Pending',
+        self::STATUS_PROCESSING => 'Processing',
+        self::STATUS_READY => 'Ready to Serve',
+        self::STATUS_COMPLETED => 'Completed',
+        self::STATUS_CANCELLED => 'Cancelled',
+    ];
+
+    public const NEXT_STATUS = [
+        self::STATUS_PENDING => self::STATUS_PROCESSING,
+        self::STATUS_PROCESSING => self::STATUS_READY,
+        self::STATUS_READY => self::STATUS_COMPLETED,
+    ];
+
+    public function getStatusLabelAttribute(): string
+    {
+        return self::STATUSES[$this->status] ?? ucfirst($this->status);
+    }
+
+    public function getNextStatusAttribute(): ?string
+    {
+        return self::NEXT_STATUS[$this->status] ?? null;
+    }
+
+    public function canBeCancelled(): bool
+    {
+        return in_array($this->status, [self::STATUS_PENDING, self::STATUS_PROCESSING]);
+    }
 }
