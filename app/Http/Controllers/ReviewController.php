@@ -12,7 +12,7 @@ class ReviewController extends Controller
     {
         abort_unless($order->user_id === auth()->id(), 403);
 
-        if ($order->status !== 'completed') {
+        if ($order->status !== Order::STATUS_COMPLETED) {
             return redirect()->route('customer.order')
                 ->with('error', 'Order can only be reviewed after completed.');
         }
